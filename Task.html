@@ -4,30 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #container{
+            height: 300px;
+            width: 300px;
+            border: 2px solid;
+            margin: 20px 20px 30px 20px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        #delete{
+            background-color: red;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        #add{
+            background-color: green;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #theme{
+            background-color: pink;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #input{
+            padding: 5px 10px;
+            border: 2px solid;
+            border-radius: 5px;
+        }
+
+        #delete:hover{
+            background-color: greenyellow;
+        }
+        #add:hover{
+            background-color: greenyellow;
+        }
+        #theme:hover{
+            background-color: greenyellow;
+        }
+    </style>
 </head>
-<body class="bg-black text-sky-500 font-bold font-sans flex flex-col items-center justify-center">
+<body>
+    <h1>To Do List</h1>
 
-    <header class="text-3xl p-2 mt-4 text-white">Daily <span class="text-sky-500">Tasks</span></header>
-
-    <div class="mt-16 flex gap-8 w-96">
-        <input id="input" class="w-96 p-1 rounded text-black" type="text" placeholder="write your new task">
+    <div id="container">
         
     </div>
 
-    <div class="mt-16 w-96 flex flex-wrap gap-8 justify-center">
-        <button id="add" class="bg-sky-500 text-black px-4 py-2 rounded hover:scale-95">Add</button>
-        <button id="delete" class="bg-sky-500 text-black px-4 py-2 rounded hover:scale-95">Delete Completed Tasks</button>
+    <input id="input" type="text">
+
+    <div id="btn">
+        <button id="delete">Delete</button>
+        <button id="add">Add</button>
+        <button id="theme">Theme</button>
     </div>
 
-    <ul id="tasklist" class="mt-16 w-96 border-2 border-sky-500 rounded p-2 text-white cursor-pointer">
-        <li>Tasks To Do : </li>
-    </ul>
+    <script>
+        var add = document.getElementById("add")
+        var del = document.getElementById("delete")
+        var c = document.getElementById("container")
+        var d = document.getElementById("theme")
+        var e = document.querySelector("body")
+        var f = document.getElementById("input")
+        
+        add.addEventListener("click", function(){
+            var task = document.createElement("p")
+            task.textContent = f.value
+            c.appendChild(task)
+            f.value = ""
+        })
 
-    <footer class="mt-16">
-        Note : <span class="text-white">Click on each task to mark as completed</span>
-    </footer>
-    
-    <script src="Task.js"></script>
+        del.addEventListener("click", function(){
+            c.textContent = ""
+        })
+
+        d.addEventListener("click", function(){
+            e.style.backgroundColor = "grey"
+        })
+    </script>
 </body>
 </html>
